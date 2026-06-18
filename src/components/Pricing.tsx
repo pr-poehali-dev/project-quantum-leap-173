@@ -49,7 +49,7 @@ const plans = [
   },
 ];
 
-export function Pricing() {
+export function Pricing({ onStart }: { onStart: () => void }) {
   return (
     <section id="pricing" className="relative z-10 bg-background py-24 md:py-32">
       <div className="container">
@@ -109,15 +109,14 @@ export function Pricing() {
                 ))}
               </ul>
 
-              <a className="contents" href="#start">
-                <Button
-                  variant={plan.highlighted ? "default" : "secondary"}
-                  size="sm"
-                  className="mt-8 w-full"
-                >
-                  [{plan.cta}]
-                </Button>
-              </a>
+              <Button
+                variant={plan.highlighted ? "default" : "secondary"}
+                size="sm"
+                className="mt-8 w-full"
+                onClick={onStart}
+              >
+                [{plan.cta}]
+              </Button>
             </div>
           ))}
         </div>

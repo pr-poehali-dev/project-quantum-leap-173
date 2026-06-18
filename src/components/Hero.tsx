@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { useState } from "react";
 import { Header } from "./Header";
 
-export function Hero() {
+export function Hero({ onStart }: { onStart: () => void }) {
   const [hovering, setHovering] = useState(false);
 
   return (
@@ -22,25 +22,23 @@ export function Hero() {
           Баланс, P&L, win rate и разбор ошибок — вся ваша торговля в одном понятном интерфейсе
         </p>
 
-        <a className="contents max-sm:hidden" href="#start">
-          <Button
-            className="mt-14"
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
-          >
-            [Начать вести дневник]
-          </Button>
-        </a>
-        <a className="contents sm:hidden" href="#start">
-          <Button
-            size="sm"
-            className="mt-14"
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
-          >
-            [Начать вести дневник]
-          </Button>
-        </a>
+        <Button
+          className="mt-14 max-sm:hidden"
+          onClick={onStart}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+        >
+          [Начать вести дневник]
+        </Button>
+        <Button
+          size="sm"
+          className="mt-14 sm:hidden"
+          onClick={onStart}
+          onMouseEnter={() => setHovering(true)}
+          onMouseLeave={() => setHovering(false)}
+        >
+          [Начать вести дневник]
+        </Button>
       </div>
     </div>
   );
